@@ -1,26 +1,31 @@
 #ifndef __BUREAUCRAT_HPP__
 #define __BUREAUCRAT_HPP__
 
+#include <exception>
 #include <iostream>
-#include <string>
+
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
  private:
-  int _grade;
+  unsigned int _grade;
   const std::string _name;
   Bureaucrat();
 
  public:
-  ~Bureaucrat();
+  virtual ~Bureaucrat();
   Bureaucrat(const Bureaucrat& rhs);
   Bureaucrat& operator=(const Bureaucrat& rhs);
-  Bureaucrat(std::string name, unsigned int grade);
+  Bureaucrat(std::string name, int grade);
   std::string getName() const;
   unsigned int getGrade() const;
   void setGradeMax();
   void setGradeMin();
   void plusGrade();
   void minusGrade();
+  void signForm(Form& rhs);
 
   class GradeTooHighException : public std::exception {
    public:
