@@ -15,6 +15,7 @@ class Bureaucrat {
   Bureaucrat();
 
  public:
+  int check_sign;
   virtual ~Bureaucrat();
   Bureaucrat(const Bureaucrat& rhs);
   Bureaucrat& operator=(const Bureaucrat& rhs);
@@ -29,16 +30,12 @@ class Bureaucrat {
 
   class GradeTooHighException : public std::exception {
    public:
-    const char* what() const throw() {
-      return "grade 는 1 초과는 불가능합니다.\n";
-    }
+    const char* what() const throw();
   };
 
   class GradeTooLowException : public std::exception {
    public:
-    const char* what() const throw() {
-      return "grade 는 150 미만은 불가능합니다.\n";
-    }
+    const char* what() const throw();
   };
 };
 

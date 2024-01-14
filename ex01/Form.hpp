@@ -13,7 +13,6 @@ class Form {
   bool _signed;
   const unsigned int _required_Sign_Grade;
   const unsigned int _required_Execute_Grade;
-  std::string err_msg;
   Form();
 
  public:

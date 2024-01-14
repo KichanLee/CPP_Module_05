@@ -8,9 +8,7 @@ Form::Form(const Form& rhs)
   *this = rhs;
 }
 Form& Form::operator=(const Form& rhs) {
-  if (this != &rhs) {
-    this->_signed = rhs._signed;
-  }
+  if (this != &rhs) this->_signed = rhs._signed;
   return (*this);
 }
 
@@ -24,9 +22,7 @@ Form::Form(std::string name, unsigned required_Sign_Grade,
     if (required_Sign_Grade > 150) throw GradeTooHighException();
   } catch (GradeTooHighException& ge) {
     std::cout << ge.what() << std::endl;
-    this->_required_Sign_Grade = 1;
   }
-  if (required_Sign_Grade > 150) throw GradeTooLowException();
   _signed = false;
 }
 
@@ -44,25 +40,21 @@ int Form::get_required_Execute_Grade() const {
 
 void Form::beSigned(const Bureaucrat& rhs) {
   if (!_signed) {
-    try {
-      if (this->_required_Sign_Grade < rhs.getGrade()) {
-        throw GradeTooLowException();
-      } else {
-        this->_signed = true;
-        std::cout << "Sign Success!\n";
-      }
-    } catch (GradeTooLowException& ge) {
-      std::cout << "You can't sign it\n";
-      std::cout << ge.what() << std::endl;
+    if (this->_required_Sign_Grade < rhs.getGrade()) {
+      throw GradeTooLowException();
     }
-  } else
+    this->_signed = true;
+    const_cast<Bureaucrat&>(rhs).check_sign = 1;
+    std::cout << "Sign Success!\n";
+  } else {
     std::cout << "Already Signed it\n";
+  }
 }
+
 std::ostream& operator<<(std::ostream& os, const Form& rhs) {
   os << "Form name is : " << rhs.get_Name();
-  os << "\nIs the Form Signed ?" << rhs.get_Sigend();
+  os << "\nIs the Form Signed ? " << rhs.get_Sigend();
   os << "\nRequired_Sign_Grade : " << rhs.get_required_Sign_Grade();
   os << "\nRequired_Execute_Grade : " << rhs.get_required_Execute_Grade();
-
   return os;
 }

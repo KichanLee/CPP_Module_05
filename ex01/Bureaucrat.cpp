@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
 
+#include <string>
+
 Bureaucrat::Bureaucrat() {}
 Bureaucrat::~Bureaucrat() {}
 Bureaucrat::Bureaucrat(const Bureaucrat& rhs) { *this = rhs; }
@@ -10,6 +12,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
   return (*this);
 }
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
+  this->check_sign = 0;
   try {
     this->_grade = grade;
     if (_grade > 150) throw Bureaucrat::GradeTooLowException();
@@ -37,20 +40,18 @@ void Bureaucrat::plusGrade() {
     return;
   }
 }
-/**
- *    <관료>가 <양식>에 서명했습니다.
-      그렇지 않으면 다음과 같이 출력됩니다:
-      <관료>가 <이유> 때문에 <양식>에 서명할 수 없습니다.
-*/
 
 void Bureaucrat::signForm(Form& rhs) {
   if (rhs.get_Sigend()) {
-    std::cout << "< " << this->getName() << " > signed < " << rhs.get_Name()
-              << " >\n";
-  } else {
-    std::cout << "< " << this->getName() << " > couldn't sign < "
-              << rhs.get_Name() << " > because < \n";
-  }
+    if (this->check_sign == 1) {
+      std::cout << this->getName() << "signed it!\n";
+    } else if (this->check_sign == 0) {
+      std::cout << "< " << this->getName() << " > couldn't sign < "
+                << rhs.get_Name()
+                << " > because < Someone Already Signed it >\n";
+    }
+  } else
+    throw GradeTooLowException();
 }
 
 void Bureaucrat::minusGrade() {
@@ -75,4 +76,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
   return "grade 는 1 초과는 불가능합니다.\n";
+}
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+  return "grade 는 150 미만은 불가능합니다.\n";
 }
