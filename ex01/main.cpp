@@ -9,27 +9,6 @@ int main() {
   test1();
   test2();
   test3();
-
-  // try ;{
-  //   Bureaucrat lkc("Leekichan", 1);
-  //   Bureaucrat officer("ShinWondie", 1);
-  //   // 이기찬 3등급
-
-  //   Form form("Finacial Form", 2, 3);
-  //   // 재정 양식 필요사인 양식 2등급 , 필요 실행등급 3등급
-  //   form.beSigned(lkc);
-  //   form.beSigned(officer);
-  //   // 이미 사인되어있는 것에 시도시에는 사인이 불가능하다고 함.
-  //   // form.beSigned(bp);
-  //   // 재정양식은 사인이 가능하다.
-
-  //   lkc.signForm(form);
-  //   officer.signForm(form);
-  // } catch (const Bureaucrat::GradeTooHighException& ge) {
-  //   std::cout << ge.what();
-  // } catch (const Bureaucrat::GradeTooLowException& le) {
-  //   std::cout << le.what();
-  // }
 }
 
 void test1(void) {

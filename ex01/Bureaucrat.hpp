@@ -19,7 +19,7 @@ class Bureaucrat {
   virtual ~Bureaucrat();
   Bureaucrat(const Bureaucrat& rhs);
   Bureaucrat& operator=(const Bureaucrat& rhs);
-  Bureaucrat(std::string name, int grade);
+  Bureaucrat(const std::string name, unsigned int grade);
   std::string getName() const;
   unsigned int getGrade() const;
   void setGradeMax();
