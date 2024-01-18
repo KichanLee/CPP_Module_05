@@ -3,10 +3,7 @@ CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM			=	rm -rf
 SRCS		=	Bureaucrat.cpp \
-				AForm.cpp \
-				PresidentialPardonForm.cpp \
-				RobotomyRequestForm.cpp \
-				ShrubberyCreationForm.cpp \
+				Form.cpp \
 				main.cpp
 OBJS		=	${SRCS:.c=.o}
 

@@ -13,40 +13,26 @@
   "        |||\n"               \
   "        |||\n"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& _name)
-    : AForm(_name, 145, 137) {}
-
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ref)
-    : AForm(ref) {
-  *this = ref;
-}
-
+ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
+    : AForm(name, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& rhs)
+    : AForm(rhs) {}
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(
-    const ShrubberyCreationForm& ref) {
-  if (this != &ref) {
-    return *this;
+    const ShrubberyCreationForm& rhs) {
+  if (this != &rhs) {
+    AForm::operator=(rhs);
   }
   return *this;
 }
+bool ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+  std::ofstream outputFile(this->get_Name() + "__shrubbery");
 
-int ShrubberyCreationForm::execute(Bureaucrat const& Shrub) const {
-  std::ofstream file;
-  std::string filename;
-  filename = Shrub.getName() + "_shrubbery";
-
-  if (beExecute() == 0) {
-    std::cout << Shrub.getName()
-              << "'s grade is lower than ShrubberyCreation's execute grade."
-              << std::endl;
-    return false;
+  if (this->get_required_Execute_Grade() > executor.getGrade())
+    throw GradeTooLowException();
+  if (outputFile.is_open()) {
+    outputFile << ASCII_TREES;
+    outputFile.close();
+  } else {
+    std::cerr << "Unable to open the file." << std::endl;
   }
-  file.open(filename.c_str());
-  if (file.fail()) {
-    std::cout << "check, this " << filename << " file." << std::endl;
-    return false;
-  }
-
-  file << ASCII_TREES;
-
-  return false;
 }

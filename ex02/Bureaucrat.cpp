@@ -1,5 +1,7 @@
 #include "Bureaucrat.hpp"
 
+#include <string>
+
 Bureaucrat::Bureaucrat() {}
 Bureaucrat::~Bureaucrat() {}
 Bureaucrat::Bureaucrat(const Bureaucrat& rhs) { *this = rhs; }
@@ -38,6 +40,19 @@ void Bureaucrat::minusGrade() {
   this->_grade++;
 }
 
+void Bureaucrat::signForm(Form& rhs) {
+  if (rhs.get_Sigend()) {
+    if (this->check_sign == 1) {
+      std::cout << this->getName() << "signed it!\n";
+    } else if (this->check_sign == 0) {
+      std::cout << "< " << this->getName() << " > couldn't sign < "
+                << rhs.get_Name()
+                << " > because < Someone Already Signed it >\n";
+    }
+  } else
+    throw GradeTooLowException();
+}
+
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
   os << " name is : ";
   os << rhs.getName();
@@ -45,4 +60,11 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
   os << rhs.getGrade();
 
   return (os);
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+  return "grade 는 1 초과는 불가능합니다.\n";
+}
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+  return "grade 는 150 미만은 불가능합니다.\n";
 }

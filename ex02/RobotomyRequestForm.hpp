@@ -1,6 +1,3 @@
-#include <cstdlib>
-#include <ctime>
-
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm {
@@ -8,10 +5,9 @@ class RobotomyRequestForm : public AForm {
   RobotomyRequestForm();
 
  public:
-  RobotomyRequestForm(const std::string& _name);
-  ~RobotomyRequestForm();
-  RobotomyRequestForm(const RobotomyRequestForm& ref);
-  RobotomyRequestForm& operator=(const RobotomyRequestForm& ref);
+  RobotomyRequestForm(std::string name);
+  RobotomyRequestForm(const RobotomyRequestForm& rhs);
+  RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
 
-  int execute(Bureaucrat const& robot) const;
+  virtual ~RobotomyRequestForm();
 };

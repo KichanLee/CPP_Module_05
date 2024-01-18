@@ -11,7 +11,7 @@ class Bureaucrat {
   Bureaucrat();
 
  public:
-  ~Bureaucrat();
+  virtual ~Bureaucrat();
   Bureaucrat(const Bureaucrat& rhs);
   Bureaucrat& operator=(const Bureaucrat& rhs);
   Bureaucrat(std::string name, unsigned int grade);
