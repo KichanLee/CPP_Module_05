@@ -13,7 +13,7 @@
   "        |||\n"               \
   "        |||\n"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
+ShrubberyCreationForm::ShrubberyCreationForm(constn std::string name)
     : AForm(name, 145, 137) {}
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& rhs)
     : AForm(rhs) {}

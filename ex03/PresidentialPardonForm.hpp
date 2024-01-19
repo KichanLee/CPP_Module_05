@@ -6,6 +6,7 @@ class PresidentialPardonForm : public AForm {
 
  public:
   virtual ~PresidentialPardonForm();
+  PresidentialPardonForm(std::string name);
   PresidentialPardonForm(const PresidentialPardonForm &rhs);
   PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
   bool execute(Bureaucrat const &executor) const;

@@ -29,11 +29,15 @@ bool RobotomyRequestForm::fiftyPercentChance() const {
 
 bool RobotomyRequestForm::execute(Bureaucrat const& executor) const {
   std::cout << "drilling~~~~~~\n";
-  if (fiftyPercentChance()) {
-    std::cout << this->get_Name() << " has been robotomized\n";
-    return true;
-  } else {
+  if ((this->get_required_Execute_Grade() > executor.getGrade(){
+    if (fiftyPercentChance()) {
+      std::cout << this->get_Name() << " has been robotomized\n";
+      return true;
+    } else {
+      std::cout << "You failed\n";
+      return false;
+    }
     std::cout << "You failed\n";
     return false;
-  }
+}
 }
