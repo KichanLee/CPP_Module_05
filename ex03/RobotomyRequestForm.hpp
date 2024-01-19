@@ -12,6 +12,6 @@ class RobotomyRequestForm : public AForm {
   RobotomyRequestForm(std::string name);
   RobotomyRequestForm(const RobotomyRequestForm& rhs);
   RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
-  bool fiftyPercentChance() const;
+  bool fiftyPercentChance() const ;
   bool virtual execute(Bureaucrat const& executor) const;
 };
