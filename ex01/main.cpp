@@ -16,9 +16,12 @@ void test1(void) {
     std::cout << "----------TEST1--------------\n";
 
     Bureaucrat officer("wonie", 1);
+    Bureaucrat officer22("wonie222", 1);
     Form form("주차 위반 건에 관하여", 5, 120);
+    form.beSigned(officer22);
     form.beSigned(officer);
     officer.signForm(form);
+    officer22.signForm(form);
     std::cout << form << std::endl;
 
   } catch (std::exception& e) {
@@ -44,8 +47,6 @@ void test3(void) {
     std::cout << "----------TEST3--------------\n";
     Bureaucrat officer("monie", 149);
     Form form("도박 위반 건에 관하여", 130, 150);
-    officer.minusGrade();
-    officer.minusGrade();
     form.beSigned(officer);
     officer.signForm(form);
     std::cout << form << std::endl;

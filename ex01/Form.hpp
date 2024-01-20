@@ -23,7 +23,7 @@ class Form {
        unsigned int _required_Execute_Grade);
 
   std::string get_Name() const;
-  bool get_Sigend() const;
+  bool get_Signed() const;
   int get_required_Sign_Grade() const;
   int get_required_Execute_Grade() const;
   void beSigned(const Bureaucrat &rhs);

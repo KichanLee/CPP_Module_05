@@ -41,16 +41,18 @@ void Bureaucrat::minusGrade() {
 }
 
 void Bureaucrat::signForm(Form& rhs) {
-  if (rhs.get_Sigend()) {
+  if (rhs.get_Signed()) {
     if (this->check_sign == 1) {
-      std::cout << this->getName() << "signed it!\n";
+      std::cout << this->getName() << "  signed it!\n";
     } else if (this->check_sign == 0) {
       std::cout << "< " << this->getName() << " > couldn't sign < "
-                << rhs.get_Name()
-                << " > because < Someone Already Signed it >\n";
+                << rhs.get_Name() << " > because  Someone Already Signed it \n";
     }
-  } else
+  } else {
+    std::cout << "< " << this->getName() << " > couldn't sign < "
+              << rhs.get_Name() << " > because  ";
     throw GradeTooLowException();
+  }
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {

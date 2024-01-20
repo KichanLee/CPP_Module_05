@@ -28,7 +28,7 @@ Form::Form(std::string name, unsigned required_Sign_Grade,
 
 std::string Form::get_Name() const { return (this->_name); }
 
-bool Form::get_Sigend() const { return (this->_signed); }
+bool Form::get_Signed() const { return (this->_signed); }
 
 int Form::get_required_Sign_Grade() const {
   return (this->_required_Sign_Grade);
@@ -41,7 +41,8 @@ int Form::get_required_Execute_Grade() const {
 void Form::beSigned(const Bureaucrat& rhs) {
   if (!_signed) {
     if (this->_required_Sign_Grade < rhs.getGrade()) {
-      throw GradeTooLowException();
+      std::cout << "Grade is too Low!\n";
+      return;
     }
     this->_signed = true;
     const_cast<Bureaucrat&>(rhs).check_sign = 1;
@@ -53,7 +54,7 @@ void Form::beSigned(const Bureaucrat& rhs) {
 
 std::ostream& operator<<(std::ostream& os, const Form& rhs) {
   os << "Form name is : " << rhs.get_Name();
-  os << "\nIs the Form Signed ? " << rhs.get_Sigend();
+  os << "\nIs the Form Signed ? " << rhs.get_Signed();
   os << "\nRequired_Sign_Grade : " << rhs.get_required_Sign_Grade();
   os << "\nRequired_Execute_Grade : " << rhs.get_required_Execute_Grade();
   return os;
