@@ -1,55 +1,70 @@
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include <exception>
+#include <iostream>
 
-void test1(void);
-void test2(void);
-void test3(void);
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "Intern.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
+void test1();
+void test2();
+void test3();
 
 int main() {
   test1();
   test2();
   test3();
+
+  return 0;
 }
 
-void test1(void) {
+void test1() {
   try {
-    std::cout << "----------TEST1--------------\n";
+    Bureaucrat bureaucrat("shrubbery executor", 1);
+    Intern intern;
+    Form* form;
 
-    Bureaucrat officer("wonie", 1);
-    Form form("주차 위반 건에 관하여", 5, 120);
-    form.beSigned(officer);
-    officer.signForm(form);
-    std::cout << form << std::endl;
+    form = intern.makeForm("shrubbery creation", "shrubbery form");
+    if (form == 0) return;
 
+    form->execute(bureaucrat);
+    form->beSigned(bureaucrat);
+    delete form;
   } catch (std::exception& e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "catch exception of shrubberyCreationFormTest" << std::endl;
   }
 }
 
-void test2(void) {
-  std::cout << "----------TEST2--------------\n";
-  Bureaucrat officer("konie", 10);
-  Form form("식품 위반 건에 관하여", 11, 5);
+void test2() {
   try {
-    form.beSigned(officer);
-    officer.signForm(form);
+    Bureaucrat bureaucrat("robotomy executor", 1);
+    Intern intern;
+    Form* form;
+
+    form = intern.makeForm("robotomy request", "robotomy form");
+    if (form == 0) return;
+    form->beSigned(bureaucrat);
+    form->execute(bureaucrat);
+    delete form;
   } catch (std::exception& e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "catch exception of robotomyRequestFormTest" << std::endl;
   }
-  std::cout << form << std::endl;
 }
 
-void test3(void) {
+void test3() {
   try {
-    std::cout << "----------TEST3--------------\n";
-    Bureaucrat officer("monie", 149);
-    Form form("도박 위반 건에 관하여", 130, 150);
-    officer.minusGrade();
-    officer.minusGrade();
-    form.beSigned(officer);
-    officer.signForm(form);
-    std::cout << form << std::endl;
+    Bureaucrat bureaucrat("presidential executor", 1);
+    Intern intern;
+    Form* form;
+
+    form = intern.makeForm("presidential pardon", "presidential form");
+    if (form == 0) return;
+    form->beSigned(bureaucrat);
+    form->execute(bureaucrat);
+    delete form;
   } catch (std::exception& e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "catch exception of presidentialPardonFormTest" << std::endl;
   }
 }

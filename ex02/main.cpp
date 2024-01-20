@@ -1,55 +1,51 @@
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include <exception>
+#include <iostream>
 
-void test1(void);
-void test2(void);
-void test3(void);
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+void test1();
+void test2();
+void test3();
 
 int main() {
-  test1();
+  // test1();
   test2();
-  test3();
+  // test3();
+  return 0;
 }
-
-void test1(void) {
+void test1() {
   try {
-    std::cout << "----------TEST1--------------\n";
-
-    Bureaucrat officer("wonie", 1);
-    Form form("주차 위반 건에 관하여", 5, 120);
-    form.beSigned(officer);
-    officer.signForm(form);
-    std::cout << form << std::endl;
-
+    Bureaucrat bureaucrat("shrubbery", 145);
+    ShrubberyCreationForm shrubberyForm("shrubbery");
+    shrubberyForm.beSigned(bureaucrat);
+    // shrubberyForm.execute(bureaucrat);
+    bureaucrat.executeForm(shrubberyForm);
   } catch (std::exception& e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "Failed shrubberyCreationFormTest" << std::endl;
   }
 }
-
-void test2(void) {
-  std::cout << "----------TEST2--------------\n";
-  Bureaucrat officer("konie", 10);
-  Form form("식품 위반 건에 관하여", 11, 5);
+void test2() {
   try {
-    form.beSigned(officer);
-    officer.signForm(form);
+    Bureaucrat bureaucrat("Robo", 3);
+    RobotomyRequestForm robo("robo");
+    robo.beSigned(bureaucrat);
+
+    // robo.execute(bureaucrat);
+    bureaucrat.executeForm(robo);
   } catch (std::exception& e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "Failed RobotomyRequestForm" << std::endl;
   }
-  std::cout << form << std::endl;
 }
-
-void test3(void) {
+void test3() {
   try {
-    std::cout << "----------TEST3--------------\n";
-    Bureaucrat officer("monie", 149);
-    Form form("도박 위반 건에 관하여", 130, 150);
-    officer.minusGrade();
-    officer.minusGrade();
-    form.beSigned(officer);
-    officer.signForm(form);
-    std::cout << form << std::endl;
+    Bureaucrat bureaucrat("presi", 1);
+    PresidentialPardonForm pre("pre");
+    // pre.beSigned(bureaucrat);
+    bureaucrat.executeForm(pre);
   } catch (std::exception& e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "Failed PresidentialPardonForm" << std::endl;
   }
 }

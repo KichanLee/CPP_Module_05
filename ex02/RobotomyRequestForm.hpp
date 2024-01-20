@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstdlib>
 #include <iostream>
 
@@ -8,10 +10,10 @@ class RobotomyRequestForm : public AForm {
   RobotomyRequestForm();
 
  public:
-  virtual ~RobotomyRequestForm();
+  ~RobotomyRequestForm();
   RobotomyRequestForm(const std::string name);
   RobotomyRequestForm(const RobotomyRequestForm& rhs);
   RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
   bool fiftyPercentChance() const;
-  bool virtual execute(Bureaucrat const& executor) const;
+  bool execute(Bureaucrat const& executor) const;
 };

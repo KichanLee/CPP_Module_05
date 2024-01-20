@@ -26,16 +26,16 @@ class AForm {
   std::string get_Name() const;
   bool get_Sigend() const;
   bool get_Executed() const;
-  bool check_Executed() const;
-  int get_required_Sign_Grade() const;
-  int get_required_Execute_Grade() const;
+  void set_Executed();
+  unsigned int get_required_Sign_Grade() const;
+  unsigned int get_required_Execute_Grade() const;
   void set_Name(std::string name);
   void set_Signed(bool sign);
   void set_Required_Sign_Grade(unsigned int sign_grade);
   void set_Required_Execute_Grade(unsigned int execute_grade);
   void beSigned(const Bureaucrat &rhs);
   void signForm();
-  bool virtual execute(Bureaucrat const &executor) const = 0;
+  virtual bool execute(Bureaucrat const &executor) const = 0;
 
   class GradeTooHighException : public std::exception {
    public:

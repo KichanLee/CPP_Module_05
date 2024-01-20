@@ -24,17 +24,20 @@ AForm::AForm(std::string name, unsigned required_Sign_Grade,
     std::cout << ge.what() << std::endl;
   }
   _signed = false;
+  _executed = false;
 }
+
+void AForm::set_Executed() { this->_executed = true; }
 
 std::string AForm::get_Name() const { return (this->_name); }
 
 bool AForm::get_Sigend() const { return (this->_signed); }
 
-int AForm::get_required_Sign_Grade() const {
+unsigned int AForm::get_required_Sign_Grade() const {
   return (this->_required_Sign_Grade);
 }
 
-int AForm::get_required_Execute_Grade() const {
+unsigned int AForm::get_required_Execute_Grade() const {
   return (this->_required_Execute_Grade);
 }
 
