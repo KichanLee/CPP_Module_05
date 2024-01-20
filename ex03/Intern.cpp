@@ -1,4 +1,5 @@
 #include "Intern.hpp"
+
 Form* (Intern::*Intern::forms[3])(const std::string) = {
     &Intern::getShruberry, &Intern::getRobo, &Intern::getPardon};
 Intern::Intern() {}
@@ -29,5 +30,5 @@ Form* Intern::makeForm(std::string formType, std::string target) {
     }
   }
   std::cout << "Error: Unknown form type." << std::endl;
-  return nullptr;
+  return (NULL);
 }
