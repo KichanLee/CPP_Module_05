@@ -28,7 +28,7 @@ bool ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
   std::ofstream outputFile((this->get_Name() + "__shrubbery").c_str());
 
   if (this->get_Sigend()) {
-    if (this->get_required_Execute_Grade() > executor.getGrade())
+    if (this->get_required_Execute_Grade() < executor.getGrade())
       throw GradeTooLowException();
     if (outputFile.is_open()) {
       outputFile << ASCII_TREES;

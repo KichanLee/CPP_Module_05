@@ -23,8 +23,6 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 
 std::string Bureaucrat::getName() const { return (this->_name); }
 unsigned int Bureaucrat::getGrade() const { return (this->_grade); }
-void Bureaucrat::setGradeMax() { this->_grade = 1; }
-void Bureaucrat::setGradeMin() { this->_grade = 150; }
 
 void Bureaucrat::plusGrade() {
   if (this->_grade == 1) {
@@ -71,8 +69,8 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-  return "grade 는 1 초과는 불가능합니다.\n";
+  return "grade is too High\n";
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-  return "grade 는 150 미만은 불가능합니다.\n";
+  return "grade is Too low\n";
 }

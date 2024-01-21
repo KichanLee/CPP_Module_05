@@ -6,7 +6,7 @@
 
 class Bureaucrat {
  private:
-  int _grade;
+  unsigned int _grade;
   const std::string _name;
   Bureaucrat();
 
@@ -17,8 +17,6 @@ class Bureaucrat {
   Bureaucrat(std::string name, unsigned int grade);
   std::string getName() const;
   unsigned int getGrade() const;
-  void setGradeMax();
-  void setGradeMin();
   void plusGrade();
   void minusGrade();
 

@@ -21,8 +21,6 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 
 std::string Bureaucrat::getName() const { return (this->_name); }
 unsigned int Bureaucrat::getGrade() const { return (this->_grade); }
-void Bureaucrat::setGradeMax() { this->_grade = 1; }
-void Bureaucrat::setGradeMin() { this->_grade = 150; }
 
 void Bureaucrat::plusGrade() {
   if (this->_grade == 1) {
@@ -39,10 +37,6 @@ void Bureaucrat::minusGrade() {
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
-  os << " name is : ";
-  os << rhs.getName();
-  os << "  /  grade is : ";
-  os << rhs.getGrade();
-
-  return (os);
+  return (os << " name is : " << rhs.getName()
+             << "  /  grade is : " << rhs.getGrade());
 }

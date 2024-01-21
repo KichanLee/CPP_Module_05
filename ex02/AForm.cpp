@@ -17,12 +17,8 @@ AForm::AForm(std::string name, unsigned required_Sign_Grade,
     : _name(name),
       _required_Sign_Grade(required_Sign_Grade),
       _required_Execute_Grade(_required_Execute_Grade) {
-  try {
-    if (required_Sign_Grade < 1) throw GradeTooHighException();
-    if (required_Sign_Grade > 150) throw GradeTooHighException();
-  } catch (GradeTooHighException& ge) {
-    std::cout << ge.what() << std::endl;
-  }
+  if (required_Sign_Grade < 1) throw GradeTooHighException();
+  if (required_Sign_Grade > 150) throw GradeTooHighException();
   _signed = false;
   _executed = false;
 }

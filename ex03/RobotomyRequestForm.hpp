@@ -1,9 +1,9 @@
+#pragma once
+
 #include <cstdlib>
 #include <iostream>
 
 #include "AForm.hpp"
-
-#pragma once
 
 class RobotomyRequestForm : public Form {
  private:

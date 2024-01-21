@@ -22,12 +22,10 @@ class Bureaucrat {
   Bureaucrat(const std::string name, unsigned int grade);
   std::string getName() const;
   unsigned int getGrade() const;
-  void setGradeMax();
-  void setGradeMin();
   void plusGrade();
   void minusGrade();
   void signForm(Form& rhs);
-
+  void executeForm(Form const& form);
   class GradeTooHighException : public std::exception {
    public:
     const char* what() const throw();

@@ -18,10 +18,10 @@ int main() {
 }
 void test1() {
   try {
-    Bureaucrat bureaucrat("shrubbery", 145);
+    Bureaucrat bureaucrat("shrubbery", 1);
     ShrubberyCreationForm shrubberyForm("shrubbery");
     shrubberyForm.beSigned(bureaucrat);
-    // shrubberyForm.execute(bureaucrat);
+    shrubberyForm.execute(bureaucrat);
     bureaucrat.executeForm(shrubberyForm);
   } catch (std::exception& e) {
     std::cout << "Failed shrubberyCreationFormTest" << std::endl;
@@ -41,9 +41,9 @@ void test2() {
 }
 void test3() {
   try {
-    Bureaucrat bureaucrat("presi", 1);
-    PresidentialPardonForm pre("pre");
-    // pre.beSigned(bureaucrat);
+    Bureaucrat bureaucrat("Yun Seok Yeol", 1);
+    PresidentialPardonForm pre("Attacks PyeonYang-Si");
+    pre.beSigned(bureaucrat);
     bureaucrat.executeForm(pre);
   } catch (std::exception& e) {
     std::cout << "Failed PresidentialPardonForm" << std::endl;

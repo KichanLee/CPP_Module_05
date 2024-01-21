@@ -29,17 +29,17 @@ bool RobotomyRequestForm::fiftyPercentChance() const {
 }
 
 bool RobotomyRequestForm::execute(Bureaucrat const& executor) const {
-  if (this->get_Sigend() &&
-      this->get_required_Execute_Grade() > executor.getGrade()) {
+  if (this->get_Sigend()) {
+    if (this->get_required_Execute_Grade() < executor.getGrade())
+      throw GradeTooLowException();
     std::cout << "drilling~~~~~~\n";
     if (fiftyPercentChance()) {
       std::cout << this->get_Name() << " has been robotomized\n";
-      return true;
+      return (true);
     } else {
       std::cout << "robotomy failed\n";
     }
-  } else {
-    std::cout << "robotomy failed\n";
   }
+  std::cout << "robotomy failed\n";
   return (false);
 }

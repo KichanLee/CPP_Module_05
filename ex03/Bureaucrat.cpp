@@ -23,8 +23,6 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 
 std::string Bureaucrat::getName() const { return (this->_name); }
 unsigned int Bureaucrat::getGrade() const { return (this->_grade); }
-void Bureaucrat::setGradeMax() { this->_grade = 1; }
-void Bureaucrat::setGradeMin() { this->_grade = 150; }
 
 void Bureaucrat::plusGrade() {
   if (this->_grade == 1) {

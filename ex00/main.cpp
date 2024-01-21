@@ -23,13 +23,16 @@ int main() {
   std::cout << "\n=============================================\n";
 
   try {
-    Bureaucrat bp_two("honhond", 160);
+    Bureaucrat bp_two("honhond", 148);
     bp_two.minusGrade();
     std::cout << bp_two << std::endl;
     bp_two.minusGrade();
     std::cout << bp_two << std::endl;
     bp_two.plusGrade();
     std::cout << bp_two << std::endl;
+    bp_two.minusGrade();
+    std::cout << bp_two << std::endl;
+    bp_two.minusGrade();
   } catch (const Bureaucrat::GradeTooHighException& ge) {
     std::cout << "Caught GradeTooHighException: " << ge.what() << std::endl;
   } catch (const Bureaucrat::GradeTooLowException& le) {

@@ -18,6 +18,7 @@ void test1(void) {
     Bureaucrat officer("wonie", 1);
     Bureaucrat officer22("wonie222", 1);
     Form form("주차 위반 건에 관하여", 5, 120);
+
     form.beSigned(officer22);
     form.beSigned(officer);
     officer.signForm(form);

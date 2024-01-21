@@ -23,8 +23,6 @@ Bureaucrat::Bureaucrat(const std::string name, unsigned int grade)
 
 std::string Bureaucrat::getName() const { return (this->_name); }
 unsigned int Bureaucrat::getGrade() const { return (this->_grade); }
-void Bureaucrat::setGradeMax() { this->_grade = 1; }
-void Bureaucrat::setGradeMin() { this->_grade = 150; }
 
 void Bureaucrat::plusGrade() {
   if (this->_grade == 1) {
@@ -43,14 +41,15 @@ void Bureaucrat::minusGrade() {
 void Bureaucrat::signForm(Form& rhs) {
   if (rhs.get_Signed()) {
     if (this->check_sign == 1) {
-      std::cout << this->getName() << "  signed it!\n";
+      std::cout << this->getName() << " signed it!\n";
     } else if (this->check_sign == 0) {
       std::cout << "< " << this->getName() << " > couldn't sign < "
-                << rhs.get_Name() << " > because  Someone Already Signed it \n";
+                << rhs.get_Name()
+                << " > because < Someone Already Signed it >\n";
     }
   } else {
     std::cout << "< " << this->getName() << " > couldn't sign < "
-              << rhs.get_Name() << " > because  ";
+              << rhs.get_Name() << " > because ";
     throw GradeTooLowException();
   }
 }
@@ -65,8 +64,8 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& rhs) {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-  return "grade 는 1 초과는 불가능합니다.\n";
+  return "grade is too High\n";
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-  return "grade 는 150 미만은 불가능합니다.\n";
+  return "grade is Too low\n";
 }
